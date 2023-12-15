@@ -1,8 +1,6 @@
 package org.example.country;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -17,8 +15,14 @@ import lombok.experimental.FieldDefaults;
 public class Country {
     @Id
     @GeneratedValue
+    @Column(name = "country_id")
     int id;
 
+    @Column(length = 30)
     String name;
+
     int age;
+
+    @Enumerated(EnumType.STRING)
+    State state;
 }

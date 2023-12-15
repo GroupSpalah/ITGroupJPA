@@ -1,11 +1,8 @@
 package org.example.country;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
-public class TestJpa {
+public class RemoveEntity {
     public static void main(String[] args) {
         EntityManagerFactory factory =
                 Persistence.createEntityManagerFactory("test_jpa");
@@ -14,16 +11,15 @@ public class TestJpa {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        Country country = Country
-                .builder()
-                .age(15)
-                .name("Sweden")
-                .state(State.ODESSA)
-                .build();
+        /*Country country = em.find(Country.class, 1);
 
-        em.persist(country);//move to persistence context
+        em.remove(country);*/
 
-        country.setName("England");
+        Query query = em.createQuery("DELETE FROM Country c WHERE c.id =: c_id");
+
+        query.setParameter("c_id", 2);
+
+        query.executeUpdate();
 
         transaction.commit();
 
