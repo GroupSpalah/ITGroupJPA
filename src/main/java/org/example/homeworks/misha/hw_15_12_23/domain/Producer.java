@@ -1,10 +1,10 @@
-package org.example.relationships.one_to_one.bi;
+package org.example.homeworks.misha.hw_15_12_23.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -12,17 +12,16 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Person {
+public class Producer {
     @Id
     @GeneratedValue
-    @Column(name = "person_id")
+    @Column(name = "producer_id")
     int id;
 
     String name;
 
-    int age;
-
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "person")
-    Address address;
+    mappedBy = "producer")
+
+    Notebook notebook;
 }
