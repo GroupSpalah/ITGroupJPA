@@ -19,7 +19,7 @@ public class TestNotebook {
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        /*Notebook notebook = Notebook
+        Notebook notebook = Notebook
                 .builder()
                 .manufacturer("Asus")
                 .model("Vivibook")
@@ -29,17 +29,29 @@ public class TestNotebook {
                 .cpu("AMD")
                 .build();
 
-        em.persist(notebook);*/
 
+        Notebook notebook2 = Notebook
+                .builder()
+                .manufacturer("HP")
+                .model("Omen")
+                .date("2022-02-02")
+                .ssd(256)
+                .ram(8)
+                .cpu("Intel")
+                .build();
 
         transaction.commit();
-
         em.close();
-        factory.close();
-
-        NotebookService service = new NotebookServiceImpl();
-
-        service.showById(1);
+         NotebookService service = new NotebookServiceImpl();
+       /*  service.showById(2);
+         service.showByModel("Omen");
+         service.showAll();
+         service.removeById(352);
+         service.removeAll();
+         service.showByDate("2023-01-01");
+         service.showBySsdRam(16,500);
+         service.showByCpu("AMD");
+         service.updateById(notebook, 752);*/
     }
 }
 
