@@ -12,7 +12,6 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString(exclude = "producer")
-
 public class Notebook {
     @Id
     @GeneratedValue
@@ -20,9 +19,9 @@ public class Notebook {
     int id;
 
     String model;
+
     @OneToOne
     @JoinColumn(name = "FK_Notebook_Producer")
-
     Producer producer;
 
     String releaseDate;

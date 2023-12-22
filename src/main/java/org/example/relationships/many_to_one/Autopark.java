@@ -1,12 +1,13 @@
-package org.example.homeworks.anton.hw_15_12_23.domain;
+package org.example.relationships.many_to_one;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,15 +15,11 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Notebook {
+public class Autopark {
     @Id
     @GeneratedValue
-    @Column(name = "notebook_id")
+    @Column(name = "park_id")
     int id;
-    String model;
-    String manufacturer;
-    String date;
-    int ram;
-    int ssd;
-    String cpu;
+
+    String name;
 }

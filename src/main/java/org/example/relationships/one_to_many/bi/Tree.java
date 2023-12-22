@@ -1,8 +1,10 @@
-package org.example.homeworks.misha.hw_15_12_23.domain;
+package org.example.relationships.one_to_many.bi;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -12,15 +14,15 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Producer {
+public class Tree {
     @Id
     @GeneratedValue
-    @Column(name = "producer_id")
+    @Column(name = "tree_id")
     int id;
 
     String name;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-    mappedBy = "producer")
-    Notebook notebook;
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+            mappedBy = "tree")
+    List<Apple> apples;
 }

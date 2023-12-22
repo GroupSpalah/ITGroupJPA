@@ -64,7 +64,8 @@ public class NotebookDAOImpl implements NotebookDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        TypedQuery<Notebook> query = em.createQuery("SELECT n FROM Notebook n", Notebook.class);
+        TypedQuery<Notebook> query =
+                em.createQuery("FROM Notebook n", Notebook.class);
         List<Notebook> notebooks = query.getResultList();
 
         // notebooks.forEach(System.out::println);
