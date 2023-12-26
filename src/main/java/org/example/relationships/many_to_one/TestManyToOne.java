@@ -1,9 +1,6 @@
 package org.example.relationships.many_to_one;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 import org.example.relationships.one_to_many.bi.Apple;
 import org.example.relationships.one_to_many.bi.Tree;
 
@@ -34,7 +31,17 @@ public class TestManyToOne {
                 .autopark(autopark1)
                 .build();
 
-        em.persist(vehicle);
+//        em.persist(vehicle);
+
+        TypedQuery<Vehicle> query =
+                em.createQuery("FROM Vehicle v JOIN v.autopark a WHERE a.name =: a_name",
+                        Vehicle.class);
+
+        query.setParameter("a_name", "City");
+
+        Vehicle vehicle1 = query.getSingleResult();
+
+        System.out.println(vehicle1);
 
         transaction.commit();
 

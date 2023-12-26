@@ -1,3 +1,4 @@
+/*
 package org.example.homeworks.misha.hw_22_12_2023.dao.impl;
 
 import jakarta.persistence.*;
@@ -88,3 +89,4 @@ public class WatchDAOImpl implements CrudDAO<Watch> {
     }
 
 }
+*/

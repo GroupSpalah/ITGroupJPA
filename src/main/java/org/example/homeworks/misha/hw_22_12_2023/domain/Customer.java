@@ -22,7 +22,4 @@ public class Customer {
 
     int numberCard;
 
-    @ManyToOne
-    @JoinColumn(name = "FK_Customer_Order")
-    Order order;
 }

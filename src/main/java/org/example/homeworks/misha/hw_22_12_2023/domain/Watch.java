@@ -29,5 +29,4 @@ public class Watch {
     @JoinColumn(name = "FK_Watch_Producer")
     Producer producer;
 
-
 }

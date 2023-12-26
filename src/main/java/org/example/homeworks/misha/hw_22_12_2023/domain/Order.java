@@ -24,11 +24,11 @@ public class Order {
 
     double discount;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "order")
-    List<Customer> customers;
+    @ManyToOne
+    @JoinColumn(name = "FK_Order_Customer")
+    Customer customer;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "order")
+            mappedBy = "order", fetch = FetchType.EAGER)
     List<OrderItem> orderItems;
 }

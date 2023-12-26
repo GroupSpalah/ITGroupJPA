@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,7 +23,8 @@ public class Group {
 
     String name;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+            fetch = FetchType.LAZY)
     /*@JoinTable(name = "group_student", joinColumns = @JoinColumn(name = "FK_Student"),
     inverseJoinColumns = @JoinColumn(name = "FK_Group"))*/
     @JoinColumn(name = "FK_Student_Group", referencedColumnName = "group_id")

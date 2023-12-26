@@ -18,7 +18,6 @@ public class OrderItem {
     @Column(name = "orderItem_id")
     int id;
 
-
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "FK_OrderItem_Watch")
     Watch watch;
@@ -29,7 +28,4 @@ public class OrderItem {
     @JoinColumn(name = "FK_OrderItem_Order")
     Order order;
 
-    public OrderItem(int count) {
-        this.count = ++count;
-    }
 }

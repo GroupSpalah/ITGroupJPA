@@ -1,3 +1,4 @@
+/*
 package org.example.homeworks.misha.hw_22_12_2023.dao.impl;
 
 import jakarta.persistence.EntityManager;
@@ -85,10 +86,9 @@ public class CustomerDAOImpl implements CrudDAO<Customer> {
 
         transaction.commit();
         em.close();
-
     }
-
-    }
-
+}
 
 
+
+*/

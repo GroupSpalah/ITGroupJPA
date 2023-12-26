@@ -1,4 +1,4 @@
-package org.example.relationships.many_to_one;
+package org.example.relationships.many_to_many;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,15 +12,11 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Vehicle {
+public class Item {
     @Id
     @GeneratedValue
-    @Column(name = "vehicle_id")
+    @Column(name = "item_id")
     int id;
 
-    String model;
-
-    @ManyToOne
-    @JoinColumn(name = "FK_Vehicle_Park")
-    Autopark autopark;
+    String name;
 }

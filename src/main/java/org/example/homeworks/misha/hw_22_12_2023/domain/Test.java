@@ -1,3 +1,4 @@
+/*
 package org.example.homeworks.misha.hw_22_12_2023.domain;
 
 import lombok.SneakyThrows;
@@ -14,3 +15,4 @@ public class Test {
 
     }
 }
+*/
