@@ -1,4 +1,4 @@
-package org.example.relationships.one_to_many.bi;
+package org.example.homeworks.misha.hw_22_12_2023.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,15 +14,21 @@ import java.util.List;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Tree {
+public class Order {
     @Id
     @GeneratedValue
-    @Column(name = "tree_id")
+    @Column(name = "order_id")
     int id;
 
-    String name;
+    String localDate;
+
+    double discount;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "tree")
-    List<Apple> apples;
+            mappedBy = "order")
+    List<Customer> customers;
+
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+            mappedBy = "order")
+    List<OrderItem> orderItems;
 }

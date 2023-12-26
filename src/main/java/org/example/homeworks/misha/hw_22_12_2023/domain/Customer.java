@@ -1,9 +1,6 @@
-package org.example.relationships.many_to_one;
+package org.example.homeworks.misha.hw_22_12_2023.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -15,11 +12,17 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Autopark {
+public class Customer {
     @Id
     @GeneratedValue
-    @Column(name = "park_id")
+    @Column(name = "customer_id")
     int id;
 
     String name;
+
+    int numberCard;
+
+    @ManyToOne
+    @JoinColumn(name = "FK_Customer_Order")
+    Order order;
 }

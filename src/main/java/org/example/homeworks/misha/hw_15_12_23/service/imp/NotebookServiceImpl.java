@@ -22,7 +22,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public void showForID(int id) throws SQLException {
+    public void showByID(int id) throws SQLException {
         dao.showForID(id);
 
     }
@@ -34,7 +34,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public void deleteForID(int id) throws SQLException {
+    public void deleteByID(int id) throws SQLException {
         dao.deleteForID(id);
     }
 
@@ -45,7 +45,7 @@ public class NotebookServiceImpl implements NotebookService {
     }
 
     @Override
-    public void updateForId(int id) throws SQLException {
+    public void updateById(int id) throws SQLException {
         dao.updateForId(id);
 
     }

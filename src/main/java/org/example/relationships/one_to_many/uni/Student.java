@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

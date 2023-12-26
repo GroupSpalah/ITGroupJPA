@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -20,7 +20,7 @@ public class Notebook {
 
     String model;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "FK_Notebook_Producer")
     Producer producer;
 

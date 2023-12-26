@@ -41,9 +41,9 @@
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="123456"/>
             <property name="hibernate.connection.url"
-                      value="jdbc:mysql://localhost:3306/notebook?serverTimezone=Europe/Kiev"/>
-<!--            <property name="hibernate.hbm2ddl.auto" value="create"/>-->
-                        <property name="hibernate.hbm2ddl.auto" value="update"/>
+                      value="jdbc:mysql://localhost:3306/watch?serverTimezone=Europe/Kiev"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+<!--                        <property name="hibernate.hbm2ddl.auto" value="update"/>-->
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>

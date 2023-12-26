@@ -10,13 +10,13 @@ public class Test {
         NotebookService notebookDAO = new NotebookServiceImpl();
         //notebookDAO.add();
         //notebookDAO.showForID(2);
-        //notebookDAO.showAll();
+        notebookDAO.showAll();
         //notebookDAO.deleteForID(1);
         //notebookDAO.deleteAll();
         //notebookDAO.updateForId(52);
         //notebookDAO.showForModel("FG5");
         //notebookDAO.showForDate("2021-11-02");
         //notebookDAO.showForRamAndSsd(8, 512);
-        notebookDAO.showForCpu("CPU28");
+        //notebookDAO.showForCpu("CPU28");
     }
 }

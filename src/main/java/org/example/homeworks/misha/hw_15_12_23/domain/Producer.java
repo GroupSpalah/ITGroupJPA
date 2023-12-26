@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Entity
+//@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,8 +19,4 @@ public class Producer {
     int id;
 
     String name;
-
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-    mappedBy = "producer")
-    Notebook notebook;
 }
