@@ -20,7 +20,7 @@ public class OrderItema {
 
     @ManyToOne
     @JoinColumn(name = "FK_OrderItema_Order")
-    Ordera order;
+    Ordera ordera;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "FK_OrderItema_Watch")
