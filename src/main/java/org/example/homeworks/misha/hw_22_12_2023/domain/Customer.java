@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -20,6 +20,6 @@ public class Customer {
 
     String name;
 
-    int numberCard;
+    String numberCard;
 
 }

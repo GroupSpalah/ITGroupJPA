@@ -24,7 +24,8 @@ public class Producer {
 
     String country;
 
-    /*@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
             mappedBy = "producer")
-    List<Watch> watches;*/
+    List<Watch> watches;
+
 }

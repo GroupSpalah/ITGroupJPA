@@ -1,7 +1,8 @@
-/*
+
 package org.example.homeworks.misha.hw_22_12_2023.service.imp;
 
 import org.example.homeworks.misha.hw_22_12_2023.dao.CrudDAO;
+import org.example.homeworks.misha.hw_22_12_2023.dao.impl.CustomerDAOImpl;
 import org.example.homeworks.misha.hw_22_12_2023.domain.Customer;
 import org.example.homeworks.misha.hw_22_12_2023.service.CrudService;
 
@@ -16,9 +17,9 @@ public class CustomerServiceImpl implements CrudService<Customer> {
     }
 
     @Override
-    public void add() throws SQLException {
-        dao.add();
+    public void add(Customer customer) throws SQLException {
+        dao.add(customer);
 
     }
 }
-*/
+
