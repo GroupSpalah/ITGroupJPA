@@ -17,7 +17,7 @@ public class BuyerDaoImpl implements CrudDao<Buyer> {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<Buyer> query = em.createQuery("FROM WatchA w WHERE w.watch_type = :w_watchType", Buyer.class);
+        TypedQuery<Buyer> query = em.createQuery("FROM WatchA w WHERE w.watchType = :w_watchType", Buyer.class);
         query.setParameter("w_watchType", watchType);
         List<Buyer> buyer = query.getResultList();
         System.out.println(buyer);

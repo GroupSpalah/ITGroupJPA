@@ -3,10 +3,6 @@ package org.example.homeworks.anton.hw_22_12_23.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.example.relationships.one_to_many.bi.Tree;
-import org.example.relationships.one_to_one.bi.Person;
-
-import static jakarta.persistence.CascadeType.PERSIST;
 
 @Entity
 @AllArgsConstructor
@@ -16,18 +12,18 @@ import static jakarta.persistence.CascadeType.PERSIST;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class OrderItem {
+public class OrderItema {
     @Id
     @GeneratedValue
-    @Column(name = "orderItem_id")
+    @Column(name = "orderItema_id")
     int id;
 
     @ManyToOne
-    @JoinColumn(name = "FK_OrderItem_Order")
-    Order order;
+    @JoinColumn(name = "FK_OrderItema_Order")
+    Ordera order;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "FK_OrderItem_Watch")
+    @JoinColumn(name = "FK_OrderItema_Watch")
    WatchA watchA;
      int count;
 }

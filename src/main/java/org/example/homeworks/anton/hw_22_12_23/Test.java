@@ -4,7 +4,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.example.homeworks.anton.hw_22_12_23.dao.CrudDao;
 import org.example.homeworks.anton.hw_22_12_23.domain.*;
 
 import org.example.homeworks.anton.hw_22_12_23.service.BuyerService;
@@ -43,7 +42,7 @@ public class Test {
                 .watchType(QUARTZ)
                 .price(100).build();
 
-        OrderItem orderItem = OrderItem
+        OrderItema orderItem = OrderItema
                 .builder()
                 .count(3)
                 .watchA(watchA).build();
@@ -54,7 +53,7 @@ public class Test {
                 .name("John")
                 .cardNumber("112")
                 .build();
-        Order order = Order
+        Ordera order = Ordera
                 .builder()
                 .date(LocalDate.now())
                 .buyer(buyer)

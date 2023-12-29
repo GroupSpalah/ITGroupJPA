@@ -3,8 +3,6 @@ package org.example.homeworks.anton.hw_22_12_23.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.example.relationships.one_to_many.bi.Apple;
-import org.example.relationships.one_to_many.bi.Tree;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.List;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Order {
+public class Ordera {
     @Id
     @GeneratedValue
     @Column(name = "order_id")
@@ -26,10 +24,10 @@ public class Order {
     LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "FK_Order_Buyer")
+    @JoinColumn(name = "FK_Ordera_Buyer")
     Buyer buyer;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "order")
-    List<OrderItem> orderItems;
+            mappedBy = "ordera")
+    List<OrderItema> orderItems;
 }
