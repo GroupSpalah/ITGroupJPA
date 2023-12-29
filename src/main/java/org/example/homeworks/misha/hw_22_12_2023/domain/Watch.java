@@ -29,4 +29,10 @@ public class Watch {
     @JoinColumn(name = "FK_Watch_Producer")
     Producer producer;
 
+    public Watch(int id, String brand, Type type, int price) {
+        this.id = id;
+        this.brand = brand;
+        this.type = type;
+        this.price = price;
+    }
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -28,4 +28,9 @@ public class OrderItem {
     @JoinColumn(name = "FK_OrderItem_Order")
     Order order;
 
+    public OrderItem(int id, Watch watch, int count) {
+        this.id = id;
+        this.watch = watch;
+        this.count = count;
+    }
 }

@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import javax.xml.crypto.Data;
+import java.time.LocalDate;
 import java.util.List;
 
-//@Entity
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -20,7 +22,7 @@ public class Order {
     @Column(name = "order_id")
     int id;
 
-    String localDate;
+    LocalDate date;
 
     double discount;
 
