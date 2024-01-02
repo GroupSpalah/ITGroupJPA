@@ -1,6 +1,5 @@
 
 package org.example.homeworks.misha.hw_22_12_2023.service.imp;
-import org.example.homeworks.misha.hw_22_12_2023.dao.CustomerDAO;
 import org.example.homeworks.misha.hw_22_12_2023.dao.impl.CustomerDAOImpl;
 import org.example.homeworks.misha.hw_22_12_2023.domain.Customer;
 import org.example.homeworks.misha.hw_22_12_2023.service.CustomerService;

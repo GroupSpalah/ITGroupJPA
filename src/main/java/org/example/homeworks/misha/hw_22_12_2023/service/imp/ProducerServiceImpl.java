@@ -16,6 +16,11 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
+    public Producer findById(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
     public void add(Producer producer) throws SQLException {
         dao.add(producer);
 

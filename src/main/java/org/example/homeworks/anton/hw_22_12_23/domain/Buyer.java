@@ -21,9 +21,7 @@ public class Buyer {
     int id;
 
     String cardNumber;
+
     String name;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-    mappedBy = "buyer")
-    private List<Purchase> purchases;
 }

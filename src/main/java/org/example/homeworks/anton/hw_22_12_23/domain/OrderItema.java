@@ -24,6 +24,7 @@ public class OrderItema {
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "FK_OrderItem_Watch")
-   WatchA watchA;
-     int count;
+    WatchA watchA;
+
+    int count;
 }

@@ -33,7 +33,11 @@ public class Test {
 
         Customer john = new Customer(0, "John", "4141 4245 4587 6668");
 
-        Order order = new Order(0, LocalDate.now(), 0.1, john, List.of(orderItem, orderItem1));
+        Order order = new Order(0, LocalDate.now(), 0.1, john,
+                List.of(orderItem, orderItem1));
+
+        orderItem.setOrder(order);
+        orderItem1.setOrder(order);
 
         watch.setProducer(producer);
         watch1.setProducer(producer);

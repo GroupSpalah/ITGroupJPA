@@ -6,6 +6,8 @@ import jakarta.persistence.TypedQuery;
 import lombok.Cleanup;
 import org.example.homeworks.misha.hw_22_12_2023.dao.ProducerDAO;
 import org.example.homeworks.misha.hw_22_12_2023.domain.Producer;
+import org.example.homeworks.misha.hw_22_12_2023.domain.SumProducer;
+
 import static org.example.homeworks.misha.hw_22_12_2023.util.Constans.*;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +24,11 @@ public class ProducerDAOImpl implements ProducerDAO {
         em.persist(producer);
 
         transaction.commit();
+    }
 
+    @Override
+    public Producer findById(int id) throws SQLException {
+        return null;
     }
 
     @Override
@@ -50,11 +56,15 @@ public class ProducerDAOImpl implements ProducerDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        TypedQuery<Producer> query =
-                em.createQuery("SELECT p, SUM (w.price) FROM Producer p JOIN p.watches w " +
-                                "GROUP BY p HAVING SUM(w.price) <=: w_total_price", Producer.class);
+        TypedQuery<SumProducer> query =
+                em.createQuery("SELECT new " +
+                                "org.example.homeworks.misha.hw_22_12_2023" +
+                                ".domain.SumProducer(p.name, SUM (w.price))" +
+                                " FROM Producer p JOIN p.watches w " +
+                                "GROUP BY p HAVING SUM(w.price) <=: w_total_price",
+                        SumProducer.class);
         query.setParameter("w_total_price", totalPrice);
-        List<Producer> producer = query.getResultList();
+        List<SumProducer> producer = query.getResultList();
         System.out.println(producer);
 
         transaction.commit();
