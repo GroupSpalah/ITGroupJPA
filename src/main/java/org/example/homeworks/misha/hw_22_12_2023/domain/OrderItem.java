@@ -14,11 +14,11 @@ import lombok.experimental.FieldDefaults;
 @ToString
 public class OrderItem {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderItem_id")
     int id;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToOne
     @JoinColumn(name = "FK_OrderItem_Watch")
     Watch watch;
 

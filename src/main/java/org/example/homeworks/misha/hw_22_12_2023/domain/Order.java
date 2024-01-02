@@ -16,9 +16,10 @@ import java.util.List;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
+@Table(name = "OrderM")
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     int id;
 

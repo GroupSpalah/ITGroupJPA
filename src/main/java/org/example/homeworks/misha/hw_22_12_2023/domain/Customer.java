@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 public class Customer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     int id;
 
