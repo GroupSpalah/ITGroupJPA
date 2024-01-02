@@ -14,9 +14,10 @@ import java.util.List;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
+@Table(name = "ProducerM")
 public class Producer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "producer_id")
     int id;
 

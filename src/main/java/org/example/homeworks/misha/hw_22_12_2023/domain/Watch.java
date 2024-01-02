@@ -11,10 +11,10 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@ToString
+@ToString(exclude = "producer")
 public class Watch {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "watch_id")
     int id;
 
