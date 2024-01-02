@@ -15,15 +15,15 @@ import lombok.experimental.FieldDefaults;
 public class OrderItema {
     @Id
     @GeneratedValue
-    @Column(name = "orderItema_id")
+    @Column(name = "orderItem_id")
     int id;
 
     @ManyToOne
-    @JoinColumn(name = "FK_OrderItema_Order")
-    Ordera ordera;
+    @JoinColumn(name = "FK_OrderItem_Purchase")
+    Purchase purchase;
 
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "FK_OrderItema_Watch")
+    @JoinColumn(name = "FK_OrderItem_Watch")
    WatchA watchA;
      int count;
 }

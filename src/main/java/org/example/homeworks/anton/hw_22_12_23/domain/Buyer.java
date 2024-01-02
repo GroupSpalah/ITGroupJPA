@@ -25,5 +25,5 @@ public class Buyer {
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
     mappedBy = "buyer")
-    private List<Ordera> orders;
+    private List<Purchase> purchases;
 }

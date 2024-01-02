@@ -9,10 +9,14 @@ import org.example.homeworks.anton.hw_22_12_23.service.BuyerService;
 import java.sql.SQLException;
 
 public class BuyerServiceImpl implements BuyerService {
-    private CrudDao<Buyer> buyerCrudDao;
+    private CrudDao<Buyer>  buyerCrudDao;
 
     public BuyerServiceImpl() {
-         buyerCrudDao  = new BuyerDaoImpl();
+        this.buyerCrudDao = new BuyerDaoImpl();
+    }
+
+    public void showById(int id) throws SQLException {
+        buyerCrudDao.showById(id);
     }
 
     public void showModelByType(WatchType watchType) throws SQLException {

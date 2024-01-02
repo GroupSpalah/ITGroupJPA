@@ -15,19 +15,19 @@ import java.util.List;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Ordera {
+public class Purchase {
     @Id
     @GeneratedValue
-    @Column(name = "order_id")
+    @Column(name = "purchase_id")
     int id;
 
     LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "FK_Ordera_Buyer")
+    @JoinColumn(name = "FK_Purchase_Buyer")
     Buyer buyer;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "ordera")
+            mappedBy = "purchase")
     List<OrderItema> orderItems;
 }
