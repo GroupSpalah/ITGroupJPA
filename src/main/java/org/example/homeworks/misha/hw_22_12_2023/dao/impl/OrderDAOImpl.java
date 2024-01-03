@@ -24,5 +24,10 @@ public class OrderDAOImpl implements CrudDAO<Order> {
 
     }
 
+    @Override
+    public Order findById(int id) throws SQLException {
+        return null;
+    }
+
 }
 

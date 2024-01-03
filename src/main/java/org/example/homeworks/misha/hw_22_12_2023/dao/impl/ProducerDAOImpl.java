@@ -50,7 +50,7 @@ public class ProducerDAOImpl implements ProducerDAO {
     }
 
     @Override
-    public void showProducer(int totalPrice) throws SQLException {
+    public void showSumByPrice(int totalPrice) throws SQLException {
         @Cleanup
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();

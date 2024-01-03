@@ -5,12 +5,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import static org.example.homeworks.misha.hw_22_12_2023.util.Constans.*;
 import lombok.Cleanup;
+import org.example.homeworks.misha.hw_22_12_2023.dao.CrudDAO;
 import org.example.homeworks.misha.hw_22_12_2023.domain.*;
-import org.example.homeworks.misha.hw_22_12_2023.service.CrudService;
 
 import java.sql.SQLException;
 
-public class CustomerDAOImpl implements CrudService<Customer> {
+public class CustomerDAOImpl implements CrudDAO<Customer> {
 
     @Override
     public void add(Customer customer) throws SQLException {

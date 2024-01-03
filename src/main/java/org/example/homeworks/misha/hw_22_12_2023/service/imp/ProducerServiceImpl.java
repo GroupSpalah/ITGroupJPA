@@ -33,8 +33,8 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
-    public void showProducer(int totalPrice) throws SQLException {
-        dao.showProducer(totalPrice);
+    public void showSumByPrice(int totalPrice) throws SQLException {
+        dao.showSumByPrice(totalPrice);
 
     }
 }
