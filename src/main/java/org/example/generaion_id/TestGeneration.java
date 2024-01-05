@@ -1,11 +1,13 @@
-package org.example.relationships.one_to_one.bi;
+package org.example.generaion_id;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import org.example.country.Country;
+import org.example.country.State;
 
-public class TestOneToOneBi {
+public class TestGeneration {
     public static void main(String[] args) {
         EntityManagerFactory factory =
                 Persistence.createEntityManagerFactory("test_jpa");
@@ -14,26 +16,13 @@ public class TestOneToOneBi {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
-        Address address = Address
+        Furniture sofa = Furniture
                 .builder()
-                .city("Kiev")
-                .country("Ukraine")
-                .build();
-
-        Person jack = Person
-                .builder()
+                .name("Sofa11")
                 .age(32)
-                .address(address)
-                .name("Jack")
                 .build();
 
-        address.setPerson(jack);
-
-        em.persist(jack);
-
-        Person person = em.find(Person.class, 1);
-
-        System.out.println(person);
+        em.persist(sofa);
 
         transaction.commit();
 
@@ -41,3 +30,10 @@ public class TestOneToOneBi {
         factory.close();
     }
 }
+
+/**
+ * 1 - insert
+ * 2 - delete
+ * 3 - create
+ * 4 - update
+ */

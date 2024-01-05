@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 public class Human {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "human_id")
     int id;
 

@@ -49,10 +49,10 @@ public class Tests {
         watch1.setManufacturer(manufacturer);
         watch2.setManufacturer(manufacturer);
 
-         watchaService.findById(852);
+        watchaService.findById(852);
         watchaService.findById(853);
 
-         buyerService.findById(1);
+        buyerService.findById(1);
 
         OrderItema orderItem = OrderItema
                 .builder()

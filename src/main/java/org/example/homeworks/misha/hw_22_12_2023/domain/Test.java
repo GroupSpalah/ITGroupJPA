@@ -3,14 +3,12 @@ package org.example.homeworks.misha.hw_22_12_2023.domain;
 
 import lombok.SneakyThrows;
 import org.example.homeworks.misha.hw_22_12_2023.service.CrudService;
-import org.example.homeworks.misha.hw_22_12_2023.service.CustomerService;
 import org.example.homeworks.misha.hw_22_12_2023.service.ProducerService;
 import org.example.homeworks.misha.hw_22_12_2023.service.WatchService;
 import org.example.homeworks.misha.hw_22_12_2023.service.imp.CustomerServiceImpl;
 import org.example.homeworks.misha.hw_22_12_2023.service.imp.OrderServiceImpl;
 import org.example.homeworks.misha.hw_22_12_2023.service.imp.ProducerServiceImpl;
 import org.example.homeworks.misha.hw_22_12_2023.service.imp.WatchServiceImpl;
-
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,7 +18,7 @@ public class Test {
     public static void main(String[] args) {
         WatchService watchService = new WatchServiceImpl();
         ProducerService producerService = new ProducerServiceImpl();
-        CustomerService customerService = new CustomerServiceImpl();
+        CrudService<Customer> customerService = new CustomerServiceImpl();
         CrudService<Order> orderService = new OrderServiceImpl();
 
         Watch watch = new Watch(0, "R11", Type.MECHANICAL, 3000);
@@ -57,7 +55,7 @@ public class Test {
 //      watchService.showByBrand(Type.ELECTRONIC);
 //      watchService.showInfoWatch(3000, Type.MECHANICAL);
 //      producerService.showWatchByCountry("Switzerland");
-      producerService.showProducer(10000);
+//      producerService.showProducer(10000);
 
     }
 }
