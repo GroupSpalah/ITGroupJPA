@@ -2,7 +2,7 @@ package org.example.homeworks.anton.hw_22_12_23.dao.impl;
 
 import jakarta.persistence.*;
 import org.example.homeworks.anton.hw_22_12_23.dao.WatchDao;
-import org.example.homeworks.anton.hw_22_12_23.domain.Buyer;
+
 
 import org.example.homeworks.anton.hw_22_12_23.domain.WatchA;
 import org.example.homeworks.anton.hw_22_12_23.domain.WatchType;
@@ -62,12 +62,12 @@ public class WatchDaoImpl implements WatchDao {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<Buyer> query =
+        TypedQuery<WatchA> query =
                 em.createQuery("FROM WatchA w WHERE w.watchType = :w_type",
-                        Buyer.class);
+                        WatchA.class);
         query.setParameter("w_type", watchType);
-        List<Buyer> buyer = query.getResultList();
-        System.out.println(buyer);
+        List<WatchA> watchAS = query.getResultList();
+        System.out.println(watchAS);
         transaction.commit();
         em.close();
     }
@@ -102,5 +102,4 @@ public class WatchDaoImpl implements WatchDao {
         transaction.commit();
         em.close();
     }
-
 }

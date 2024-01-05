@@ -12,12 +12,12 @@ public class WatchAServiceImpl implements WatchaService {
     WatchDao dao;
 
     public WatchAServiceImpl() {
-     dao = new WatchDaoImpl();
+        dao = new WatchDaoImpl();
     }
 
     @Override
     public void showModelByType(WatchType watchType) throws SQLException {
-        dao.showModelByType(watchType);
+       dao.showModelByType(watchType);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class WatchAServiceImpl implements WatchaService {
     }
 
     @Override
-    public void findById(int id) throws SQLException {
-dao.findById(id);
+    public WatchA findById(int id) throws SQLException {
+       return dao.findById(id);
 
     }
 }

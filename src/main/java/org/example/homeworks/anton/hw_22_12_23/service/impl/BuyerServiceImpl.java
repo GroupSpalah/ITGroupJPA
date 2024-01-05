@@ -28,8 +28,8 @@ public class BuyerServiceImpl  implements CrudService<Buyer> {
 
 
     @Override
-    public void findById(int id) throws SQLException {
-       daoA.findById(id);
+    public Buyer findById(int id) throws SQLException {
+     return daoA.findById(id);
 
     }
 }

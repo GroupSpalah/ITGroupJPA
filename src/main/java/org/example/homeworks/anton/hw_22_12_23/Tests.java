@@ -34,10 +34,9 @@ public class Tests {
                 .builder()
                 .model("Casio")
                 .watchType(WatchType.ELECTRIC)
+
                 .price(200).build();
 
-        watchaService.add(watch1);
-        watchaService.add(watch2);
 
         Manufacturer manufacturer = Manufacturer
                 .builder()
@@ -45,45 +44,40 @@ public class Tests {
                 .name("LG")
                 .watches(List.of(watch1, watch2))
                 .build();
-        manufacturerService.add(manufacturer);
+
         watch1.setManufacturer(manufacturer);
         watch2.setManufacturer(manufacturer);
+        manufacturerService.add(manufacturer);
 
-         watchaService.findById(852);
-        watchaService.findById(853);
-
-         buyerService.findById(1);
 
         OrderItema orderItem = OrderItema
                 .builder()
                 .count(3)
+                .watchA(watch1)
                 .build();
 
+
+        Buyer byId = buyerService.findById(1);
         Purchase purchase = Purchase
                 .builder()
                 .date(LocalDate.of(2022, 12, 2))
                 .orderItems(List.of(orderItem))
+                .buyer(byId)
                 .build();
-        purchaseService.add(purchase);
 
         orderItem.setPurchase(purchase);
+        purchaseService.add(purchase);
 
         Buyer buyer = Buyer
                 .builder()
                 .name("John")
                 .cardNumber("112")
                 .build();
-        buyerService.add(buyer);
 
+        buyerService.add(buyer);
         purchase.setBuyer(buyer);
 
 
-
-
-
-
-
-       /* buyerService.showById(1);
-        purchaseService.showModelByType(QUARTZ);*/
+        /*watchaService.showModelByType(WatchType.ELECTRIC);*/
     }
 }

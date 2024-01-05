@@ -30,8 +30,8 @@ daoA.update(id);
 
 
     @Override
-    public void findById(int id) throws SQLException {
-    daoA.findById(id);
+    public Purchase findById(int id) throws SQLException {
+ return    daoA.findById(id);
 
     }
 }

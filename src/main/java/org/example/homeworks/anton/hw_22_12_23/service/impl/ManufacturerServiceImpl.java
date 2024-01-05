@@ -31,13 +31,13 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
 
     @Override
-    public void findById(int id) throws SQLException {
-        daoA.findById(id);
+    public Manufacturer findById(int id) throws SQLException {
+     return   daoA.findById(id);
 
     }
 
     @Override
     public void showByPrice(double maxPrice) throws SQLException {
-           daoA.showByPrice(maxPrice);
+          daoA.showByPrice(maxPrice);
     }
 }

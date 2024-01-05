@@ -9,5 +9,5 @@ public interface CrudService<T> {
     void add(T t);
 
 
-   void findById(int id) throws SQLException;
+   T findById(int id) throws SQLException;
 }
