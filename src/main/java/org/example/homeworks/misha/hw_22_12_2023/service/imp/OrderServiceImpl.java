@@ -21,5 +21,10 @@ public class OrderServiceImpl implements CrudService<Order> {
         dao.add(order);
 
     }
+
+    @Override
+    public Order findById(int id) throws SQLException {
+        return dao.findById(id);
+    }
 }
 

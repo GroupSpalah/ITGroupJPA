@@ -3,8 +3,6 @@ package org.example.homeworks.misha.hw_22_12_2023.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.List;
 

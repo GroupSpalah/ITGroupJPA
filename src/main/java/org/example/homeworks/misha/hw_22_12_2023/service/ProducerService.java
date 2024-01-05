@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public interface ProducerService extends ProducerDAO {
     public void showWatchByCountry(String country) throws SQLException;
-    public void showProducer(int totalPrice) throws SQLException;
+    public void showSumByPrice(int totalPrice) throws SQLException;
 
 
 }
