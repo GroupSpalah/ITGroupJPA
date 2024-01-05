@@ -1,14 +1,14 @@
 package org.example.homeworks.anton.hw_22_12_23;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+
 import org.example.homeworks.anton.hw_22_12_23.domain.*;
-import org.example.homeworks.anton.hw_22_12_23.service.BuyerService;
-import org.example.homeworks.anton.hw_22_12_23.service.PurchaseService;
+import org.example.homeworks.anton.hw_22_12_23.service.CrudService;
+import org.example.homeworks.anton.hw_22_12_23.service.ManufacturerService;
+import org.example.homeworks.anton.hw_22_12_23.service.WatchaService;
 import org.example.homeworks.anton.hw_22_12_23.service.impl.BuyerServiceImpl;
+import org.example.homeworks.anton.hw_22_12_23.service.impl.ManufacturerServiceImpl;
 import org.example.homeworks.anton.hw_22_12_23.service.impl.PurchaseServiceImpl;
+import org.example.homeworks.anton.hw_22_12_23.service.impl.WatchAServiceImpl;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -18,19 +18,17 @@ import static org.example.homeworks.anton.hw_22_12_23.domain.WatchType.QUARTZ;
 
 public class Tests {
     public static void main(String[] args) throws SQLException {
-        EntityManagerFactory factory =
-                Persistence.createEntityManagerFactory("antonio");
-        EntityManager em = factory.createEntityManager();
 
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
+        CrudService<Buyer> buyerService = new BuyerServiceImpl();
+        CrudService<Purchase> purchaseService = new PurchaseServiceImpl();
+        WatchaService watchaService = new WatchAServiceImpl();
+        ManufacturerService manufacturerService = new ManufacturerServiceImpl();
 
         WatchA watch1 = WatchA
                 .builder()
                 .model("Super")
                 .watchType(QUARTZ)
-                .price(100)
-                .build();
+                .price(100).build();
 
         WatchA watch2 = WatchA
                 .builder()
@@ -38,58 +36,54 @@ public class Tests {
                 .watchType(WatchType.ELECTRIC)
                 .price(200).build();
 
+        watchaService.add(watch1);
+        watchaService.add(watch2);
+
         Manufacturer manufacturer = Manufacturer
                 .builder()
                 .country("Ukraine")
                 .name("LG")
                 .watches(List.of(watch1, watch2))
                 .build();
-
+        manufacturerService.add(manufacturer);
         watch1.setManufacturer(manufacturer);
         watch2.setManufacturer(manufacturer);
 
+         watchaService.findById(852);
+        watchaService.findById(853);
+
+         buyerService.findById(1);
+
         OrderItema orderItem = OrderItema
                 .builder()
-                .id(1)
                 .count(3)
-                .watchA(watch1).build();
+                .build();
 
         Purchase purchase = Purchase
                 .builder()
                 .date(LocalDate.of(2022, 12, 2))
                 .orderItems(List.of(orderItem))
                 .build();
+        purchaseService.add(purchase);
 
-        Purchase purchase1 = Purchase
-                .builder()
-                .date(LocalDate.of(2023, 1, 2))
-                .orderItems(List.of(orderItem))
-                .build();
         orderItem.setPurchase(purchase);
-        orderItem.setPurchase(purchase1);
 
-        /*Buyer buyer = Buyer
+        Buyer buyer = Buyer
                 .builder()
                 .name("John")
                 .cardNumber("112")
-                .build();*/
+                .build();
+        buyerService.add(buyer);
 
-        Buyer buyer = em.find(Buyer.class, 1);
-
-        purchase1.setBuyer(buyer);
         purchase.setBuyer(buyer);
-        em.persist(purchase);
-       /* em.persist(manufacturer);
-        em.persist(orderItem);
-        em.persist(buyer);
-       */
-        transaction.commit();
-        em.close();
 
-        BuyerService buyerService = new BuyerServiceImpl();
-        PurchaseService purchaseService = new PurchaseServiceImpl();
 
-        buyerService.showById(1);
-        purchaseService.showModelByType(QUARTZ);
+
+
+
+
+
+       /* buyerService.showById(1);
+        purchaseService.showModelByType(QUARTZ);*/
     }
 }

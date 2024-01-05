@@ -22,7 +22,7 @@ public class OrderItema {
     @JoinColumn(name = "FK_OrderItem_Purchase")
     Purchase purchase;
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToOne
     @JoinColumn(name = "FK_OrderItem_Watch")
     WatchA watchA;
 

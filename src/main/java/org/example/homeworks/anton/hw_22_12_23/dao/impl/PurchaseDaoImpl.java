@@ -1,36 +1,57 @@
 package org.example.homeworks.anton.hw_22_12_23.dao.impl;
 
-import jakarta.persistence.*;
-import org.example.homeworks.anton.hw_22_12_23.dao.CrudDao;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+
+import org.example.homeworks.anton.hw_22_12_23.dao.CrudDaoA;
 import org.example.homeworks.anton.hw_22_12_23.domain.Purchase;
-import org.example.homeworks.anton.hw_22_12_23.domain.WatchType;
-import org.example.homeworks.misha.hw_22_12_2023.domain.OrderItem;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
-public class PurchaseDaoImpl implements CrudDao<Purchase> {
+public class PurchaseDaoImpl implements CrudDaoA<Purchase> {
 
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
-    @Override
-    public void showById(int id) throws SQLException {
-
-    }
 
     @Override
-    public void showModelByType(WatchType watchType) throws SQLException {
+    public void add(Purchase purchase) {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-            TypedQuery<OrderItem> query = em.createQuery(
-                    "SELECT oi FROM OrderItem oi WHERE oi.watch.brand = :watchBrand", OrderItem.class);
-            query.setParameter("watchBrand", watchType);
-             query.getResultList();
-        }
+        em.persist(purchase);
+        transaction.commit();
+    }
+    @Override
+    public Purchase findById(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Purchase purchase = em.find(Purchase.class, id);
+        System.out.println(purchase);
+        transaction.commit();
+        em.close();
+
+        return purchase;
+    }
+
 
     @Override
-    public void showByPrice(int price) throws SQLException {
+    public Purchase update(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Purchase purchase = em.find(Purchase.class, id);
+       purchase.setDate(LocalDate.of(2021,1,13));
 
+        System.out.println(purchase);
+        transaction.commit();
+        em.close();
+        return purchase;
     }
+
+
 }
 

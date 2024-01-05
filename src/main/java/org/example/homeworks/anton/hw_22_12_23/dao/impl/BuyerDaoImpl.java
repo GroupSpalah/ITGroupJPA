@@ -1,18 +1,28 @@
 package org.example.homeworks.anton.hw_22_12_23.dao.impl;
 
-import jakarta.persistence.*;
-import org.example.homeworks.anton.hw_22_12_23.dao.CrudDao;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Persistence;
+
+import org.example.homeworks.anton.hw_22_12_23.dao.CrudDaoA;
 import org.example.homeworks.anton.hw_22_12_23.domain.Buyer;
-import org.example.homeworks.anton.hw_22_12_23.domain.WatchA;
-import org.example.homeworks.anton.hw_22_12_23.domain.WatchType;
 
 import java.sql.SQLException;
-import java.util.List;
 
-public class BuyerDaoImpl implements CrudDao<Buyer> {
+public class BuyerDaoImpl implements CrudDaoA<Buyer> {
     public static final EntityManagerFactory FACTORY =
             Persistence.createEntityManagerFactory("antonio");
-    public void showById(int id) {
+
+    @Override
+    public void add(Buyer buyer) {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(buyer);
+        transaction.commit();
+    }
+    public Buyer findById(int id) {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -20,20 +30,22 @@ public class BuyerDaoImpl implements CrudDao<Buyer> {
         System.out.println(buyer);
         transaction.commit();
         em.close();
+
+        return buyer;
     }
 
-    public void showModelByType(WatchType watchType){
+    @Override
+    public Buyer update(int id) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<Buyer> query =
-                em.createQuery("FROM WatchA w WHERE w.watchType = :w_type",
-                        Buyer.class);
-        query.setParameter("w_type", watchType);
-        List<Buyer> buyer = query.getResultList();
+        Buyer buyer = em.find(Buyer.class, id);
+        buyer.setCardNumber("123456");
+        buyer.setName("Ivan");
         System.out.println(buyer);
         transaction.commit();
         em.close();
+        return buyer;
     }
 
 

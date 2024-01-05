@@ -1,54 +1,72 @@
 package org.example.homeworks.anton.hw_22_12_23.dao.impl;
 
 import jakarta.persistence.*;
-import org.example.homeworks.anton.hw_22_12_23.dao.CrudDao;
+
+
+import org.example.homeworks.anton.hw_22_12_23.dao.ManufacturerDao;
 import org.example.homeworks.anton.hw_22_12_23.domain.Manufacturer;
-import org.example.homeworks.anton.hw_22_12_23.domain.WatchA;
-import org.example.homeworks.anton.hw_22_12_23.domain.WatchType;
+import org.example.homeworks.anton.hw_22_12_23.domain.SumManufacturer;
+
 
 import java.sql.SQLException;
 import java.util.List;
 
 
-public class ManufacturerDaoImpl implements CrudDao<Manufacturer> {
+public class ManufacturerDaoImpl implements ManufacturerDao {
     public static final EntityManagerFactory FACTORY =
-                Persistence.createEntityManagerFactory("antonio");
-
-
+            Persistence.createEntityManagerFactory("antonio");
     @Override
-    public void showById(int id) throws SQLException {
-        EntityManager em = FACTORY.createEntityManager();
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-            Manufacturer manufacturer = em.find(Manufacturer.class, id);
-            System.out.println(manufacturer);
-            transaction.commit();
-            em.close();
-        }
-
-    @Override
-    public void showModelByType(WatchType t) throws SQLException {
-
-    }
-
-
-
-
-    @Override
-    public void showByPrice(int price) throws SQLException{
+    public void add(Manufacturer manufacturer) {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<WatchA> query = em.createQuery("SELECT FROM WatchA w WHERE w.watchType = :w_watchType = MECHANICAL " +
-                        "AND w.price < 500 ",
-                WatchA.class);
-        query.setParameter("w_price", price);
-        List<WatchA> resultList = query.getResultList();
-        System.out.println(resultList);;
+        em.persist(manufacturer);
+        transaction.commit();
+    }
 
+    @Override
+    public Manufacturer findById(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Manufacturer manufacturer = em.find(Manufacturer.class, id);
+        System.out.println(manufacturer);
         transaction.commit();
         em.close();
+
+        return manufacturer;
     }
+
+
+    @Override
+    public Manufacturer update(int id) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        Manufacturer manufacturer = em.find(Manufacturer.class, id);
+        manufacturer.setName("Sony");
+        manufacturer.setCountry("USA");
+        System.out.println(manufacturer);
+        transaction.commit();
+        em.close();
+        return manufacturer;
+
     }
+
+
+    @Override
+    public void showByPrice(double maxPrice) throws SQLException {
+        EntityManager em = FACTORY.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        TypedQuery<SumManufacturer> query = em.createQuery("SELECT new" + "org.example.homeworks.anton.hw_22_12_23.domain." +
+                "SumManufacturer(m.name,SUM (w.price))" + "FROM Manufacturer m JOIN m.watches w GROUP BY " +
+        "m HAVING SUM(w.price) <=: w_maxPrice", SumManufacturer.class);
+        query.setParameter("w_maxPrice",maxPrice);
+        List<SumManufacturer> manufacturers = query.getResultList();
+        System.out.println(manufacturers);
+        transaction.commit();
+    }
+}
 
 

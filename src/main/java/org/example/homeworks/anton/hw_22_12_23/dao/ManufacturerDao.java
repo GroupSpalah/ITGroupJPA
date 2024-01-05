@@ -1,9 +1,9 @@
-package org.example.homeworks.anton.hw_22_12_23.service;
+package org.example.homeworks.anton.hw_22_12_23.dao;
 
 import org.example.homeworks.anton.hw_22_12_23.domain.Manufacturer;
 
 import java.sql.SQLException;
 
-public interface ManufacturerService extends CrudService<Manufacturer> {
+public interface ManufacturerDao extends CrudDaoA<Manufacturer>{
     public void showByPrice(double maxPrice) throws SQLException;
 }
