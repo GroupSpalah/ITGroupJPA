@@ -1,7 +1,6 @@
 package org.example.homeworks.misha.hw_22_12_2023.dao;
 import org.example.homeworks.misha.hw_22_12_2023.domain.Type;
 import org.example.homeworks.misha.hw_22_12_2023.domain.Watch;
-import org.example.homeworks.misha.hw_22_12_2023.service.CrudService;
 
 import java.sql.SQLException;
 

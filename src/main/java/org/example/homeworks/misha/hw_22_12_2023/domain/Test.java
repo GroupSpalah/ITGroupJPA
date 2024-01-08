@@ -40,22 +40,22 @@ public class Test {
         watch.setProducer(producer);
         watch1.setProducer(producer);
 
-//       producerService.add(producer);
+       producerService.add(producer);
         Watch watchId1 = watchService.findById(1);
         Watch watchId2 = watchService.findById(2);
 
         orderItem.setWatch(watchId1);
         orderItem1.setWatch(watchId2);
 
-//        customerService.add(john);
-//        Customer customer = customerService.findById(1);
-//        order.setCustomer(customer);
-//        orderService.add(order);
+        customerService.add(john);
+        Customer customer = customerService.findById(1);
+        order.setCustomer(customer);
+        orderService.add(order);
 
-//      watchService.showByBrand(Type.ELECTRONIC);
-//      watchService.showInfoWatch(3000, Type.MECHANICAL);
-//      producerService.showWatchByCountry("Switzerland");
-//      producerService.showProducer(10000);
+      watchService.showByBrand(Type.ELECTRONIC);
+      watchService.showInfoWatch(3000, Type.MECHANICAL);
+      producerService.showWatchByCountry("Switzerland");
+      producerService.showSumByPrice(10000);
 
     }
 }
