@@ -22,7 +22,7 @@ public class WatchAServiceImpl implements WatchaService {
 
     @Override
     public void showWatchByCountry(String country) throws SQLException {
-
+                dao.showWatchByCountry(country);
     }
 
     @Override
@@ -39,5 +39,9 @@ public class WatchAServiceImpl implements WatchaService {
     public WatchA findById(int id) throws SQLException {
        return dao.findById(id);
 
+    }
+
+    public void showByPrice(WatchType watchType,int price) throws SQLException{
+        dao.showByPrice(watchType,price);
     }
 }

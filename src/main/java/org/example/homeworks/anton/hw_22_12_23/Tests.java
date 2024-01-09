@@ -14,7 +14,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.example.homeworks.anton.hw_22_12_23.domain.WatchType.QUARTZ;
+
+
 
 public class Tests {
     public static void main(String[] args) throws SQLException {
@@ -27,7 +28,7 @@ public class Tests {
         WatchA watch1 = WatchA
                 .builder()
                 .model("Super")
-                .watchType(QUARTZ)
+                .watchType(WatchType.QUARTZ)
                 .price(100).build();
 
         WatchA watch2 = WatchA
@@ -39,7 +40,7 @@ public class Tests {
 
         Manufacturer manufacturer = Manufacturer
                 .builder()
-                .country("Ukraine")
+                .country("USA")
                 .name("LG")
                 .watches(List.of(watch1, watch2))
                 .build();
@@ -55,12 +56,18 @@ public class Tests {
                 .watchA(watch1)
                 .build();
 
+        OrderItema orderItema = OrderItema
+                .builder()
+                .count(4)
+                .watchA(watch2)
+                .build();
+
 
         Buyer byId = buyerService.findById(1);
         Purchase purchase = Purchase
                 .builder()
                 .date(LocalDate.of(2022, 12, 2))
-                .orderItems(List.of(orderItem))
+                .orderItems(List.of(orderItem,orderItema))
                 .buyer(byId)
                 .build();
 
@@ -72,12 +79,14 @@ public class Tests {
                 .name("John")
                 .cardNumber("112")
                 .build();
-
         buyerService.add(buyer);
         purchase.setBuyer(buyer);
-     /*   watchaService.showWatchByCountry("Ukraine");*/
-        watchaService.showModelByType(WatchType.QUARTZ);
-       /* manufacturerService.showByPrice(200);*/
+
+       /*watchaService.showWatchByCountry("USA");*/
+       /* watchaService.showModelByType(WatchType.MECHANICAL);*/
+      /*  watchaService.showModelByType(WatchType.ELECTRIC);*/
+        manufacturerService.showBySomePrice(201);
+     /*   watchaService.showByPrice(WatchType.MECHANICAL,100);*/
 
 
     }

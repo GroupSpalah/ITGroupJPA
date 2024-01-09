@@ -9,4 +9,5 @@ public interface WatchaService extends CrudService<WatchA> {
     public void showModelByType(WatchType watchType) throws SQLException;
 
     void showWatchByCountry(String country) throws SQLException;
+    public void showByPrice(WatchType watchType,int price) throws SQLException;
 }

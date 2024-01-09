@@ -73,13 +73,14 @@ System.out.println(watchA);
     }
 
     @Override
-    public void showByPrice(int price) throws SQLException {
+    public void showByPrice(WatchType watchType,int price) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<WatchA> query = em.createQuery("SELECT FROM WatchA w WHERE w.watchType = :MECHANICAL" +
-                        "AND w.price < :price ",
+        TypedQuery<WatchA> query = em.createQuery(" SELECT w FROM WatchA w WHERE w.watchType = :w_watchType " +
+                        "AND w.price <= :w_price",
                 WatchA.class);
+        query.setParameter("w_watchType",watchType);
         query.setParameter("w_price", price);
         List<WatchA> resultList = query.getResultList();
         System.out.println(resultList);
@@ -92,9 +93,9 @@ System.out.println(watchA);
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<WatchA> query = em.createQuery("SELECT w.model FROM WatchA w WHERE m.country =:m_country"
+        TypedQuery<WatchA> query = em.createQuery("SELECT w FROM WatchA w WHERE w.manufacturer.country = :country"
                 , WatchA.class);
-        query.setParameter("m_country", country);
+        query.setParameter("country", country);
         List<WatchA> resultList = query.getResultList();
         System.out.println(resultList);
 

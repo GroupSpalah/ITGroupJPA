@@ -8,6 +8,6 @@ import java.sql.SQLException;
 public interface WatchDao extends CrudDaoA<WatchA> {
     public void showModelByType(WatchType type) throws SQLException;
 
-    void showByPrice(int price) throws SQLException;
+    void showByPrice(WatchType watchType,int price) throws SQLException;
     void showWatchByCountry(String country) throws SQLException;
 }

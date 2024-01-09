@@ -7,5 +7,5 @@ import java.sql.SQLException;
 public interface ManufacturerDao extends CrudDaoA<Manufacturer>{
     Manufacturer update(Manufacturer manufacturer) throws SQLException;
 
-    public void showByPrice(double maxPrice) throws SQLException;
+    public void showBySomePrice(double maxPrice) throws SQLException;
 }

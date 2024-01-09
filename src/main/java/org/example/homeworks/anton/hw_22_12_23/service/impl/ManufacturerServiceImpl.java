@@ -37,7 +37,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public void showByPrice(double maxPrice) throws SQLException {
-          daoA.showByPrice(maxPrice);
+    public void showBySomePrice(double maxPrice) throws SQLException {
+          daoA.showBySomePrice(maxPrice);
     }
 }

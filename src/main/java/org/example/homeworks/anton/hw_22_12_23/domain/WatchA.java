@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@ToString
+@ToString(exclude = "manufacturer")
 public class WatchA {
     @Id
     @GeneratedValue
