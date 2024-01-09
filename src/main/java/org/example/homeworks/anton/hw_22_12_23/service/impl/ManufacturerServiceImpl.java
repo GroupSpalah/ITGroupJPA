@@ -19,8 +19,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     }
 
     @Override
-    public void update(int id) throws SQLException {
-        daoA.update(id);
+    public void update(Manufacturer manufacturer) throws SQLException {
+        daoA.update(manufacturer);
     }
 
     @Override

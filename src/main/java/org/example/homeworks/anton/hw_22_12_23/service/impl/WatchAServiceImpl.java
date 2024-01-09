@@ -26,8 +26,8 @@ public class WatchAServiceImpl implements WatchaService {
     }
 
     @Override
-    public void update(int id) throws SQLException {
-        dao.update(id);
+    public void update(WatchA watchA) throws SQLException {
+        dao.update(watchA);
     }
 
     @Override

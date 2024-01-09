@@ -40,19 +40,19 @@ public class WatchDaoImpl implements WatchDao {
     }
 
     @Override
-    public WatchA update(int id) throws SQLException {
+    public WatchA update(WatchA watchA) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        WatchA watchA = em.find(WatchA.class, id);
-        watchA.setModel("Rolex");
+       watchA.setPrice(102);
+       watchA.setModel("Casio +");
         watchA.setPrice(1000);
-
-
-        System.out.println(watchA);
+WatchA watchA1 = em.merge(watchA);
+em.persist(watchA1);
+System.out.println(watchA);
         transaction.commit();
         em.close();
-        return watchA;
+        return watchA1;
 
     }
 
@@ -63,9 +63,9 @@ public class WatchDaoImpl implements WatchDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         TypedQuery<WatchA> query =
-                em.createQuery("FROM WatchA w WHERE w.watchType = :w_type",
+                em.createQuery("SELECT w FROM WatchA w WHERE w.watchType = :w_watchType",
                         WatchA.class);
-        query.setParameter("w_type", watchType);
+        query.setParameter("w_watchType", watchType);
         List<WatchA> watchAS = query.getResultList();
         System.out.println(watchAS);
         transaction.commit();
@@ -92,8 +92,7 @@ public class WatchDaoImpl implements WatchDao {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        TypedQuery<WatchA> query = em.createQuery("SELECT w.model FROM WatchA w WHERE w.manufacturer.country = " +
-                        ":m_country"
+        TypedQuery<WatchA> query = em.createQuery("SELECT w.model FROM WatchA w WHERE m.country =:m_country"
                 , WatchA.class);
         query.setParameter("m_country", country);
         List<WatchA> resultList = query.getResultList();

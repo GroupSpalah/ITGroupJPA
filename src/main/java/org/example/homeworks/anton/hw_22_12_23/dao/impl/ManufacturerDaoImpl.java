@@ -39,17 +39,18 @@ public class ManufacturerDaoImpl implements ManufacturerDao {
 
 
     @Override
-    public Manufacturer update(int id) throws SQLException {
+    public Manufacturer update(Manufacturer manufacturer) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Manufacturer manufacturer = em.find(Manufacturer.class, id);
-        manufacturer.setName("Sony");
-        manufacturer.setCountry("USA");
-        System.out.println(manufacturer);
+        manufacturer.setName("LG");
+        manufacturer.setCountry("Cuba");
+        Manufacturer manufacturer1 = em.merge(manufacturer);
+        em.persist(manufacturer1);
+        System.out.println(manufacturer1);
         transaction.commit();
         em.close();
-        return manufacturer;
+        return manufacturer1;
 
     }
 
@@ -60,8 +61,8 @@ public class ManufacturerDaoImpl implements ManufacturerDao {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         TypedQuery<SumManufacturer> query = em.createQuery("SELECT new" + "org.example.homeworks.anton.hw_22_12_23.domain." +
-                "SumManufacturer(m.name,SUM (w.price))" + "FROM Manufacturer m JOIN m.watches w GROUP BY " +
-        "m HAVING SUM(w.price) <=: w_maxPrice", SumManufacturer.class);
+                "SumManufacturer(m.name,SUM (w.price))" + "FROM Manufacturer m " +
+                "JOIN m.watches w GROUP BY m HAVING SUM(w.price) <=: w_maxPrice", SumManufacturer.class);
         query.setParameter("w_maxPrice",maxPrice);
         List<SumManufacturer> manufacturers = query.getResultList();
         System.out.println(manufacturers);

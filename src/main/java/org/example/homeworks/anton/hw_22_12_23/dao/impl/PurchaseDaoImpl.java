@@ -39,19 +39,17 @@ public class PurchaseDaoImpl implements CrudDaoA<Purchase> {
 
 
     @Override
-    public Purchase update(int id) throws SQLException {
+    public Purchase update(Purchase purchase) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Purchase purchase = em.find(Purchase.class, id);
-       purchase.setDate(LocalDate.of(2021,1,13));
-
-        System.out.println(purchase);
+        purchase.setDate(LocalDate.of(2021,1,22));
+        Purchase purchase1 = em.merge(purchase);
+        em.persist(purchase1);
+        System.out.println(purchase1);
         transaction.commit();
         em.close();
-        return purchase;
+        return purchase1;
     }
-
-
 }
 

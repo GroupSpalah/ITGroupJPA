@@ -34,7 +34,6 @@ public class Tests {
                 .builder()
                 .model("Casio")
                 .watchType(WatchType.ELECTRIC)
-
                 .price(200).build();
 
 
@@ -76,8 +75,10 @@ public class Tests {
 
         buyerService.add(buyer);
         purchase.setBuyer(buyer);
+     /*   watchaService.showWatchByCountry("Ukraine");*/
+        watchaService.showModelByType(WatchType.QUARTZ);
+       /* manufacturerService.showByPrice(200);*/
 
 
-        /*watchaService.showModelByType(WatchType.ELECTRIC);*/
     }
 }

@@ -16,8 +16,8 @@ public class BuyerServiceImpl  implements CrudService<Buyer> {
     }
 
     @Override
-    public void update(int id) throws SQLException {
-        daoA.update(id);
+    public void update(Buyer buyer) throws SQLException {
+        daoA.update(buyer);
     }
 
     @Override

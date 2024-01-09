@@ -35,17 +35,18 @@ public class BuyerDaoImpl implements CrudDaoA<Buyer> {
     }
 
     @Override
-    public Buyer update(int id) throws SQLException {
+    public Buyer update(Buyer buyer) throws SQLException {
         EntityManager em = FACTORY.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Buyer buyer = em.find(Buyer.class, id);
-        buyer.setCardNumber("123456");
-        buyer.setName("Ivan");
-        System.out.println(buyer);
+
+        buyer.setCardNumber("121111222");
+        buyer.setName("Ihor");
+        Buyer buyer1 = em.merge(buyer);
+        em.persist(buyer1);
+        System.out.println(buyer1);
         transaction.commit();
-        em.close();
-        return buyer;
+        return buyer1;
     }
 
 
