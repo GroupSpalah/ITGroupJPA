@@ -1,4 +1,4 @@
-package org.example.relationships.one_to_one.bi;
+package org.example.generaion_id;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,17 +12,13 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @ToString
-public class Person {
+public class Furniture {
     @Id
-    @GeneratedValue
-    @Column(name = "person_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "furniture_id")
     int id;
 
     String name;
 
     int age;
-
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-            mappedBy = "person")
-    Address address;
 }

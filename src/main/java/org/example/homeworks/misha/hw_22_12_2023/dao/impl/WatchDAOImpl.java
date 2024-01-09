@@ -64,7 +64,8 @@ public class WatchDAOImpl implements WatchDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         TypedQuery<Watch> query =
-                em.createQuery("SELECT w FROM Watch w WHERE w.price <= :w_price AND w.type = :w_type",
+                em.createQuery("SELECT w FROM Watch w WHERE " +
+                                "w.price <= :w_price AND w.type = :w_type",
                         Watch.class);
 
         query.setParameter("w_price", price);
