@@ -23,7 +23,7 @@ public class TestManyToOne {
 
 //        em.persist(autopark);
 
-        Autopark autopark1 = em.find(Autopark.class, 1);
+        Autopark autopark1 = em.getReference(Autopark.class, 1);
 
         Vehicle vehicle = Vehicle
                 .builder()
@@ -31,9 +31,9 @@ public class TestManyToOne {
                 .autopark(autopark1)
                 .build();
 
-//        em.persist(vehicle);
+        em.persist(vehicle);
 
-        TypedQuery<Vehicle> query =
+       /* TypedQuery<Vehicle> query =
                 em.createQuery("FROM Vehicle v JOIN v.autopark a WHERE a.name =: a_name",
                         Vehicle.class);
 
@@ -41,7 +41,7 @@ public class TestManyToOne {
 
         Vehicle vehicle1 = query.getSingleResult();
 
-        System.out.println(vehicle1);
+        System.out.println(vehicle1);*/
 
         transaction.commit();
 
